@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
 
@@ -9,10 +9,12 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class ContactFormComponent implements OnInit {
 
+  @Output() onContactCreated = new EventEmitter(); 
+
   contactForm = this.formBuilder.group({
-    fullname: [''],
-    pseudo: [''],
-    mail: ['']
+    fullname: ['', [Validators.required, Validators.pattern("^[a-zA-Z]+$")]],
+    pseudo: ['', [Validators.required, Validators.pattern("^[a-zA-Z]+$")]],
+    mail: ['', [Validators.required, Validators.email]]
   });
 
   constructor(private formBuilder: FormBuilder) {
@@ -23,7 +25,7 @@ export class ContactFormComponent implements OnInit {
   }
 
   public onSubmit() : void {
-
+    this.onContactCreated.emit({contactForm : this.contactForm})
   }
 
 }

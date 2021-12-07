@@ -1,8 +1,8 @@
 <header>
   Gestion de Mes Contacts
 </header>
-<app-contact-list [contacts]="mockContacts"></app-contact-list>
-<app-contact-form></app-contact-form>
+<!-- <app-contact-list [contacts]="contacts"></app-contact-list> -->
+<app-contact-form (onContactCreated)="onContactCreated($event)"></app-contact-form>
 
 
 
