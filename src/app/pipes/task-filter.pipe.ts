@@ -8,7 +8,7 @@ import { Task } from '../service/models/task';
 export class TaskFilterPipe implements PipeTransform {
 
   transform(tasks: Task[]): number {
-    return tasks.filter(x => x.exec).length;
+    return tasks.filter(x => !x.exec).length;
   }
 
 }

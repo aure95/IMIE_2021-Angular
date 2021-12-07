@@ -15,6 +15,7 @@ import { HeaderComponent } from './header/header.component';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { FormsModule } from '@angular/forms';
 import { TaskFilterPipe } from './pipes/task-filter.pipe';
+import { TaskFilterDonePipe } from './pipes/task-filter-done.pipe';
 
 
 
@@ -26,7 +27,8 @@ import { TaskFilterPipe } from './pipes/task-filter.pipe';
     TaskButtonComponent,
     HeaderComponent,
     TaskFormComponent,
-    TaskFilterPipe
+    TaskFilterPipe,
+    TaskFilterDonePipe
   ],
   imports: [
     BrowserModule,
