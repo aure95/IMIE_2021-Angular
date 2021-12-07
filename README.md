@@ -25,3 +25,13 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+****************************************
+
+One page contact
+Réaliser un projet angular une page avec différents composant
+Lister les contacts (nom complet, pseudo, email)
+Intégrer un composant d'ajout de contact
+Intégrer un composant d'affichage de contact avec possibilité de modifier le nom complet
+
+Pour le formulaire, utilisez FormBuilder (FormGroup, FormControlName, Validators, etc.)
