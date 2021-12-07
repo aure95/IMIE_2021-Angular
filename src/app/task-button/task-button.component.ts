@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-task-button',
@@ -7,12 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskButtonComponent implements OnInit {
 
+  @Input() motive!: String;
+  @Input() onclick !: Function;
+
+  currentMotive!: String
+
   constructor() { }
 
   ngOnInit(): void {
+    this.currentMotive = this.motive;
   }
 
   public onClick() : void {
+    this.onclick();
     console.log("task-button clicked");
   }
 

@@ -11,6 +11,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatListModule} from '@angular/material/list';
+import { HeaderComponent } from './header/header.component';
+import { TaskFormComponent } from './task-form/task-form.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -18,7 +22,9 @@ import {MatListModule} from '@angular/material/list';
     AppComponent,
     XyzComponent,
     TasksListComponent,
-    TaskButtonComponent
+    TaskButtonComponent,
+    HeaderComponent,
+    TaskFormComponent
   ],
   imports: [
     BrowserModule,
@@ -26,9 +32,8 @@ import {MatListModule} from '@angular/material/list';
     BrowserAnimationsModule,
     MatSliderModule,
     MatDividerModule,
-    MatListModule
-    
-    
+    MatListModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

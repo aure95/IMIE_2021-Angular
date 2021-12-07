@@ -308,7 +308,8 @@
 <span>HOLA</span>
 
 <div>
-  hola
-  <app-task-button></app-task-button>
-  <app-tasks-list [tasks]="tasks"></app-tasks-list>
+  <app-header></app-header>
+  <app-task-button [motive]="buttonMotiveSelected" [onclick]="onClickButton"></app-task-button>
+  <app-task-form></app-task-form>
+  <app-tasks-list [tasks]="tasks" [onselect]="onSelect"></app-tasks-list>
 </div>

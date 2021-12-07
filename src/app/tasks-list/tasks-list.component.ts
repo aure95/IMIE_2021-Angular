@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
-import { Arr } from '../service/models/arr';
+import { Task } from '../service/models/task';
 
 @Component({
   selector: 'app-tasks-list',
@@ -9,12 +9,17 @@ import { Arr } from '../service/models/arr';
 })
 export class TasksListComponent implements OnInit {
 
-  @Input() tasks!: Arr[];
+  @Input() tasks!: Task[];
+  @Input() onselect!: Function;
 
   constructor() { }
 
   ngOnInit(): void {
      
   }
+
+  // public onSelect(task: Task) {
+  //   this.onselect;
+  // }
 
 }

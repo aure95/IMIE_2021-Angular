@@ -1,6 +1,4 @@
-<div>
     <mat-list>
-        <mat-list-item *ngFor="let task of tasks">{{task.title}}</mat-list-item>
+        <mat-list-item *ngFor="let task of tasks" (click)="onselect(task)">{{task.title}}</mat-list-item>
     </mat-list> 
-</div>        
            

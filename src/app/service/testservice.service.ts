@@ -1,18 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Arr } from './models/arr';
+import { Task } from './models/task';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TestserviceService {
 
-  private tasks: Arr[] = [];
+  private tasks: Task[] = [];
 
   constructor() {
     this.tasks = this.initTasks();
   }
 
-  protected initTasks(): Arr[] {
+  protected initTasks(): Task[] {
     var tasks  = [
       {
         "id" : 1,
@@ -34,11 +34,11 @@ export class TestserviceService {
     return tasks;
   }
 
-  public getAllTasks(): Arr[] {
+  public getAllTasks(): Task[] {
     return this.tasks;
   }
 
-  public addTask(task : Arr): void {
+  public addTask(task : Task): void {
     this.tasks.push(task);
   } 
 

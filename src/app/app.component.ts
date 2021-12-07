@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Arr } from './service/models/arr';
+import { Task } from './service/models/task';
 import { TestserviceService } from './service/testservice.service';
 
 @Component({
@@ -10,16 +10,37 @@ import { TestserviceService } from './service/testservice.service';
 export class AppComponent {
   title = 'test';
 
-  public tasks: Arr[] = [];
-
   private testService : TestserviceService;
+
+  public tasks: Task[] = [];
+  motiveButton: string[] = ["+", "-"];
+  buttonMotiveSelected: String = "+";
+  private taskSelected: boolean = false;
+  private selectedTask!: Task;
 
   constructor(testService: TestserviceService) {
     this.testService = testService;
+    this.motiveButton = ["+", "-"];
+    this.selectedTask;
   }
 
   ngOnInit() {
     this.tasks = this.testService.getAllTasks();
-    console.log(this.tasks)
+    this.taskSelected = this.taskSelected;
+    this.buttonMotiveSelected = this.buttonMotiveSelected;
+  }
+
+  public onClickButton(): void{
+    if (this.taskSelected) {
+      this.testService.deleteTask(this.selectedTask.id) 
+    }
+  }
+
+  public onSelect(task: Task) {
+    this.taskSelected = !this.taskSelected;
+    this.buttonMotiveSelected = this.buttonMotiveSelected == "+"? "-" : "+"; 
+    console.log(this.buttonMotiveSelected);
+    console.log(task.id);
+    console.log(this.taskSelected)
   }
 }
