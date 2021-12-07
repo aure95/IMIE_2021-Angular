@@ -14,6 +14,7 @@ import {MatListModule} from '@angular/material/list';
 import { HeaderComponent } from './header/header.component';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { FormsModule } from '@angular/forms';
+import { TaskFilterPipe } from './pipes/task-filter.pipe';
 
 
 
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     TasksListComponent,
     TaskButtonComponent,
     HeaderComponent,
-    TaskFormComponent
+    TaskFormComponent,
+    TaskFilterPipe
   ],
   imports: [
     BrowserModule,
