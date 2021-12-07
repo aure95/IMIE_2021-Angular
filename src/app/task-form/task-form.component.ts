@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { InvokeFunctionExpr } from '@angular/compiler';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Task } from '../service/models/task';
 
 @Component({
   selector: 'app-task-form',
@@ -8,15 +10,22 @@ import { NgForm } from '@angular/forms';
 })
 export class TaskFormComponent implements OnInit {
 
-  task?: Task;
 
-  constructor() {}
+  @Output() newTaskEvent = new EventEmitter();
+  task: Task;
 
-  ngOnInit(): void {
+  constructor() {
+    this.task = new Task();
   }
 
-  public onSubmit(taskForm: NgForm) : void {
+  ngOnInit(): void {
+   
+  }
+
+  public onSubmit() : void {
     
+    this.newTaskEvent.emit({task : this.task});
+    this.task = new Task();
   }
 
 }

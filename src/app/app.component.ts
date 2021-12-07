@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Task } from './service/models/task';
 import { TestserviceService } from './service/testservice.service';
 
@@ -8,6 +8,8 @@ import { TestserviceService } from './service/testservice.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  @Output() newtaskEvent = new EventEmitter();
   title = 'test';
 
   private testService : TestserviceService;
@@ -31,9 +33,15 @@ export class AppComponent {
   }
 
   public onClickButton(): void{
-    if (this.taskSelected) {
-      this.testService.deleteTask(this.selectedTask.id) 
-    }
+    // if (this.taskSelected) {
+    //   this.testService.deleteTask(this.taskSelected) 
+    // }
+  }
+
+  public onCheck(task : Task) {
+    console.log("onCheck");
+    task.exec = true;
+    // this.testService.deleteTask(task)
   }
 
   public onSelect(task: Task) {
@@ -42,6 +50,12 @@ export class AppComponent {
     console.log(this.buttonMotiveSelected);
     console.log(task.id);
     console.log(this.taskSelected)
+  }
+
+  public onSubmit(newTaskEvent: any) {
+    console.log(newTaskEvent.task);
+    this.testService.addTask(newTaskEvent.task);
+    
   }
 
 }

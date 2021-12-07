@@ -11,6 +11,7 @@ export class TasksListComponent implements OnInit {
 
   @Input() tasks!: Task[];
   @Input() onselect!: Function;
+  @Input() onCheck!: Function;
 
   constructor() { }
 

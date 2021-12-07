@@ -42,8 +42,9 @@ export class TestserviceService {
     this.tasks.push(task);
   } 
 
-  public deleteTask(id : number): void {
-    this.tasks.splice(id, 1);
+  public deleteTask(task: Task): void {
+    const index = this.tasks.indexOf(task);
+    if (index >= 0) this.tasks.splice(index, 1);
   }
   
 }

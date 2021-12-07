@@ -6,7 +6,6 @@
 <!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<p>hola</p>
 <style>
   :host {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
@@ -305,11 +304,10 @@
 
 
 
-<span>HOLA</span>
 
 <div>
   <app-header></app-header>
   <app-task-button [motive]="buttonMotiveSelected" [onclick]="onClickButton"></app-task-button>
-  <app-task-form></app-task-form>
-  <app-tasks-list [tasks]="tasks" [onselect]="onSelect"></app-tasks-list>
+  <app-task-form (newTaskEvent)="onSubmit($event)"></app-task-form>
+  <app-tasks-list [tasks]="tasks" [onselect]="onSelect" [onCheck]="onCheck"></app-tasks-list>
 </div>
