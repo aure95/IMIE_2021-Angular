@@ -16,8 +16,7 @@ export class TaskFormComponent implements OnInit {
   }
 
   public onSubmit(taskForm: NgForm) : void {
-    console.log("submit")
-    console.log()
+    
   }
 
 }

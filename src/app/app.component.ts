@@ -43,4 +43,5 @@ export class AppComponent {
     console.log(task.id);
     console.log(this.taskSelected)
   }
+
 }
