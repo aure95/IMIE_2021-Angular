@@ -309,5 +309,6 @@
   <app-header></app-header>
   <app-task-button [motive]="buttonMotiveSelected" [onclick]="onClickButton"></app-task-button>
   <app-task-form (newTaskEvent)="onSubmit($event)"></app-task-form>
+  <span>number of Tasks done: {{countTaskExec()}}</span>
   <app-tasks-list [tasks]="tasks" [onselect]="onSelect" [onCheck]="onCheck"></app-tasks-list>
 </div>

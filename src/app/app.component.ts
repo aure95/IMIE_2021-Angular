@@ -58,4 +58,8 @@ export class AppComponent {
     
   }
 
+  public countTaskExec() :number {
+    return this.tasks.filter(x => x.exec).length;
+  }
+
 }
