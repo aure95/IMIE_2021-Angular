@@ -8,11 +8,25 @@ import { Contact } from '../models/Contact';
 })
 export class ContactListComponent implements OnInit {
 
+  contactSelected?: Contact;
+
   @Input() contacts!: Contact[];
 
-  constructor() { }
+  constructor() {
+    this.contactSelected = undefined;
+   }
 
   ngOnInit(): void {
+  }
+
+  public onClick(contact: Contact) {
+    if (this.contactSelected != contact) {
+      this.contactSelected = contact;
+    } else {
+      this.contactSelected = undefined;
+    }
+  
+    
   }
 
 }
