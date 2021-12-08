@@ -25,7 +25,6 @@ export class ContactServiceService {
   // why contactSelected disapeared
 
   public setContactSelected(t: string) : void {
-    console.log("  t : " + t)
     try {
     localStorage.setItem('c', t);
     } catch (e) {

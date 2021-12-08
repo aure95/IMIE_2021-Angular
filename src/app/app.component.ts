@@ -40,20 +40,13 @@ export class AppComponent {
 
   public onContactSelectedEvent(onContactSelectedEvent: any) : void {
     this.contactSelected = onContactSelectedEvent.contactSelected;
-    // console.log(onContactSelectedEvent.contactSelected);
-    //this.contactService.setContactSelected(this.contactSelected);
-    
     console.log(onContactSelectedEvent.contactSelected);
-    // this.fullNameSelected = onContactSelectedEvent.contactSelected;
-    //console.log(this.fullNameSelected);
     this.contactService.setContactSelected(this.contactSelected.fullname)
-    //console.log(this.contactService.getContactSelected());
     
   }
 
   public onKeyPressed(event: KeyboardEvent) {
     let keyPressed = event.key;
-    console.log(keyPressed);
   
     if (keyPressed == "Backspace"  && this.keyBoardBuffer.length != 0) {
      this.keyBoardBuffer = this.keyBoardBuffer.substr(0, this.keyBoardBuffer.length-1)
@@ -81,24 +74,9 @@ export class AppComponent {
     
   }
 
-  public updateSelectedContactPropertyValue(): void {
-    if (this.contactPropertyToChange != undefined && this.contactSelected != undefined) {
-      // let contactModified = this.contactSelected;
-      let propertyName: string = this.contactPropertyToChange;
-      let propertyModified = JSON.parse("{'"+ propertyName +"' : '"+ this.keyBoardBuffer +"'}");
-      Object.assign(this.contactSelected, propertyModified);
-      console.log(propertyModified);
-
-    }
-  }
-
   public onChange(contactPropertyToChange : string): void {
-    console.log(contactPropertyToChange); 
     this.keyBoardBuffer = "";
     this.contactPropertyToChange = contactPropertyToChange;
-    // this.fullNameSelected = this.contactService.getContactSelected();
-    // console.log(this.contactService.getContactSelected())
-    // console.log("this.fullNameSelected =     " + this.fullNameSelected)
   }
 
 
