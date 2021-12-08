@@ -14,14 +14,29 @@ export class ContactServiceService {
     return JSON.parse(localStorage.getItem('contacts') || '');
   }
 
-  // why contactSelected disapeared
-
   set contactSelected(t: Contact) {
-    localStorage.setItem('contactSelected', JSON.stringify(t));
+    localStorage.setItem('contact', JSON.stringify(t));
   }
 
   get contactSelected(): Contact {
-    return JSON.parse(localStorage.getItem('contactSelected') || '');
+    return JSON.parse(localStorage.getItem('contact') || '');
+  }
+
+  // why contactSelected disapeared
+
+  public setContactSelected(t: string) : void {
+    console.log("  t : " + t)
+    try {
+    localStorage.setItem('c', t);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  public getContactSelected(): string {
+   // console.log("getContactSelected       " +  localStorage.getItem('c') || '');
+   // JSON.parse(localStorage.getItem('c') || '');
+    return "hola this is a test";
   }
 
   constructor() { }

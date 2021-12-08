@@ -1,7 +1,7 @@
 export class Contact {
     
-    fullname!: String
-    pseudo!: String;
-    mail!: String;
+    fullname!: string
+    pseudo!: string;
+    mail!: string;
     
 }

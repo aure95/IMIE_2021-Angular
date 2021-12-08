@@ -25,7 +25,7 @@ export class ContactListComponent implements OnInit {
       this.contactSelected = contact;
       this.onContactSelected.emit({contactSelected: this.contactSelected});
     } else {
-      // this.contactSelected = undefined;
+       this.contactSelected = undefined;
     }
   
     

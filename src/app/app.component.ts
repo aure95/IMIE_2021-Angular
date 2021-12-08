@@ -1,4 +1,5 @@
 import { HIGH_CONTRAST_MODE_ACTIVE_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, HostListener } from '@angular/core';
 import { Contact } from 'src/app/models/Contact';
 import { ContactServiceService } from './services/contact-service.service';
@@ -18,6 +19,7 @@ export class AppComponent {
   contactSelected!: Contact;
   keyBoardBuffer!: String;
   contactPropertyToChange?: string;
+  fullNameSelected!: string;
   
   
   constructor(private contactService: ContactServiceService) {
@@ -27,7 +29,7 @@ export class AppComponent {
   ngOnInit() {
     this.contacts = this.contactService.contacts;
     this.keyBoardBuffer = "";
-   // this.contactSelected = this.contactService.contactSelected;
+    this.contactSelected = this.contactService.contactSelected;
   }
 
   public onContactCreated(onContactCreatedEvent: any) {
@@ -37,10 +39,16 @@ export class AppComponent {
   }
 
   public onContactSelectedEvent(onContactSelectedEvent: any) : void {
-    this.contactSelected = Object.assign(new Contact(),onContactSelectedEvent.contactSelected);
-    console.log(this.contactSelected);
-   // this.contactService.contactSelected = this.contactSelected;
-    console.log(this.contactSelected);
+    this.contactSelected = onContactSelectedEvent.contactSelected;
+    // console.log(onContactSelectedEvent.contactSelected);
+    //this.contactService.setContactSelected(this.contactSelected);
+    
+    console.log(onContactSelectedEvent.contactSelected);
+    // this.fullNameSelected = onContactSelectedEvent.contactSelected;
+    //console.log(this.fullNameSelected);
+    this.contactService.setContactSelected(this.contactSelected.fullname)
+    //console.log(this.contactService.getContactSelected());
+    
   }
 
   public onKeyPressed(event: KeyboardEvent) {
@@ -51,18 +59,21 @@ export class AppComponent {
      this.keyBoardBuffer = this.keyBoardBuffer.substr(0, this.keyBoardBuffer.length-1)
     }
      if (keyPressed == "Enter") {
-      //  this.contactSelected = this.contactService.contactSelected;
-      console.log(this.contactPropertyToChange + "      "+ this.contactSelected);
-      if (this.contactPropertyToChange != undefined && this.contactSelected != undefined) {
-        // let propertyName: string = this.contactPropertyToChange;
-        // console.log("enter in Enter")
-        // console.log(propertyName)
-        // let propertyModified = JSON.parse("{'"+ propertyName +"' : '"+ this.keyBoardBuffer +"'}");
-        // Object.assign(this.contactSelected, propertyModified);
-        // console.log(propertyModified);
-        // console.log("Exit Enter")
+       console.log(this.keyBoardBuffer)
+      // var contactSelected = this.contactService.getContactSelected().fullname;
+      // var contactSelected = this.fullNameSelected;
+      // console.log(contactSelected);
+      // console.log(this.contactPropertyToChange + "      "+ contactSelected);
+      // if (this.contactPropertyToChange != undefined && contactSelected != undefined) {
+      //   // let propertyName: string = this.contactPropertyToChange;
+      //   // console.log("enter in Enter")
+      //   // console.log(propertyName)
+      //   // let propertyModified = JSON.parse("{'"+ propertyName +"' : '"+ this.keyBoardBuffer +"'}");
+      //   // Object.assign(this.contactSelected, propertyModified);
+      //   // console.log(propertyModified);
+      //   // console.log("Exit Enter")
   
-      }
+      // }
     }
     if (keyPressed.match("\\w") && keyPressed != "Enter" && keyPressed != "Backspace"){
         this.keyBoardBuffer += keyPressed;
@@ -85,6 +96,9 @@ export class AppComponent {
     console.log(contactPropertyToChange); 
     this.keyBoardBuffer = "";
     this.contactPropertyToChange = contactPropertyToChange;
+    // this.fullNameSelected = this.contactService.getContactSelected();
+    // console.log(this.contactService.getContactSelected())
+    // console.log("this.fullNameSelected =     " + this.fullNameSelected)
   }
 
 
