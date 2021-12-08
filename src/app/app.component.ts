@@ -14,21 +14,24 @@ export class AppComponent {
                             {"fullname" : "fbjfbhfbhfbfjf fhlkojkjlkhf", "pseudo": "fhgknjgjg,hfb", "mail" : "lmhlbvgdqgufgkfg@fjhbfhbfh"}];
 
   contacts: Contact[] = [];
+  contactSelected?: Contact;
   
   constructor(private contactService: ContactServiceService) {
 
   }
 
   ngOnInit() {
-   // this.contacts = this.contactService.contacts;
+    this.contacts = this.contactService.contacts;
   }
 
   public onContactCreated(onContactCreatedEvent: any) {
     var contact = onContactCreatedEvent.contactForm.value;
-    console.log(contact);
     this.contacts.push(contact);
-    console.log(this.contacts);
     this.contactService.contacts = this.contacts;
+  }
+
+  public onContactSelectedEvent(onContactSelectedEvent: any) : void {
+    this.contactSelected = onContactSelectedEvent.contactSelected;
   }
 
 

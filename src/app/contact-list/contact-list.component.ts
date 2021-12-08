@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { Contact } from '../models/Contact';
 
 @Component({
@@ -8,13 +8,14 @@ import { Contact } from '../models/Contact';
 })
 export class ContactListComponent implements OnInit {
 
-  contactSelected?: Contact;
-
   @Input() contacts!: Contact[];
+  @Output() onContactSelected = new EventEmitter();
+
+  contactSelected?: Contact;
 
   constructor() {
     this.contactSelected = undefined;
-   }
+  }
 
   ngOnInit(): void {
   }
@@ -22,6 +23,7 @@ export class ContactListComponent implements OnInit {
   public onClick(contact: Contact) {
     if (this.contactSelected != contact) {
       this.contactSelected = contact;
+      this.onContactSelected.emit({contactSelected: this.contactSelected});
     } else {
       this.contactSelected = undefined;
     }

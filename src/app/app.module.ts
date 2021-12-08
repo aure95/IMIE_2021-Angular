@@ -8,12 +8,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatCardModule} from '@angular/material/card';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { ReactiveFormsModule} from '@angular/forms';
+import { ContactViewComponent } from './contact-view/contact-view.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ContactListComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    ContactViewComponent
   ],
   imports: [
     BrowserModule,

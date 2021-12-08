@@ -1,0 +1,11 @@
+<div *ngIf="contact != undefined">
+<h2>Detail du Contact</h2>
+    <section *ngFor="let contactElement of contact | keyvalue" >
+        <h1 *ngIf="contactElement.key != undefined">
+            {{contactElement.key}}
+        </h1>
+        <span *ngIf="contactElement.value != undefined">
+            {{contactElement.value}}
+        </span>
+    </section>
+</div>
