@@ -15,16 +15,19 @@ export class AppComponent {
                             {"fullname" : "fbjfbhfbhfbfjf fhlkojkjlkhf", "pseudo": "fhgknjgjg,hfb", "mail" : "lmhlbvgdqgufgkfg@fjhbfhbfh"}];
 
   contacts: Contact[] = [];
-  contactSelected?: Contact;
+  contactSelected!: Contact;
   keyBoardBuffer!: String;
+  contactPropertyToChange?: string;
   
   
   constructor(private contactService: ContactServiceService) {
+    this.contactService = contactService;
   }
 
   ngOnInit() {
     this.contacts = this.contactService.contacts;
     this.keyBoardBuffer = "";
+   // this.contactSelected = this.contactService.contactSelected;
   }
 
   public onContactCreated(onContactCreatedEvent: any) {
@@ -34,7 +37,10 @@ export class AppComponent {
   }
 
   public onContactSelectedEvent(onContactSelectedEvent: any) : void {
-    this.contactSelected = onContactSelectedEvent.contactSelected;
+    this.contactSelected = Object.assign(new Contact(),onContactSelectedEvent.contactSelected);
+    console.log(this.contactSelected);
+   // this.contactService.contactSelected = this.contactSelected;
+    console.log(this.contactSelected);
   }
 
   public onKeyPressed(event: KeyboardEvent) {
@@ -43,8 +49,20 @@ export class AppComponent {
   
     if (keyPressed == "Backspace"  && this.keyBoardBuffer.length != 0) {
      this.keyBoardBuffer = this.keyBoardBuffer.substr(0, this.keyBoardBuffer.length-1)
-    } else if (keyPressed == "Enter") {
-      console.log(this.keyBoardBuffer);
+    }
+     if (keyPressed == "Enter") {
+      //  this.contactSelected = this.contactService.contactSelected;
+      console.log(this.contactPropertyToChange + "      "+ this.contactSelected);
+      if (this.contactPropertyToChange != undefined && this.contactSelected != undefined) {
+        // let propertyName: string = this.contactPropertyToChange;
+        // console.log("enter in Enter")
+        // console.log(propertyName)
+        // let propertyModified = JSON.parse("{'"+ propertyName +"' : '"+ this.keyBoardBuffer +"'}");
+        // Object.assign(this.contactSelected, propertyModified);
+        // console.log(propertyModified);
+        // console.log("Exit Enter")
+  
+      }
     }
     if (keyPressed.match("\\w") && keyPressed != "Enter" && keyPressed != "Backspace"){
         this.keyBoardBuffer += keyPressed;
@@ -52,14 +70,21 @@ export class AppComponent {
     
   }
 
-  public onChange(contact: Contact): void {
-    console.log(contact)
-    this.keyBoardBuffer = "";
-    // const index = this.contacts.indexOf(contact);
-    // if (index >= 0) {
-    //   this.contacts.splice(index, 1, contact);
-    // }
+  public updateSelectedContactPropertyValue(): void {
+    if (this.contactPropertyToChange != undefined && this.contactSelected != undefined) {
+      // let contactModified = this.contactSelected;
+      let propertyName: string = this.contactPropertyToChange;
+      let propertyModified = JSON.parse("{'"+ propertyName +"' : '"+ this.keyBoardBuffer +"'}");
+      Object.assign(this.contactSelected, propertyModified);
+      console.log(propertyModified);
 
+    }
+  }
+
+  public onChange(contactPropertyToChange : string): void {
+    console.log(contactPropertyToChange); 
+    this.keyBoardBuffer = "";
+    this.contactPropertyToChange = contactPropertyToChange;
   }
 
 

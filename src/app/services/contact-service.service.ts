@@ -14,6 +14,16 @@ export class ContactServiceService {
     return JSON.parse(localStorage.getItem('contacts') || '');
   }
 
+  // why contactSelected disapeared
+
+  set contactSelected(t: Contact) {
+    localStorage.setItem('contactSelected', JSON.stringify(t));
+  }
+
+  get contactSelected(): Contact {
+    return JSON.parse(localStorage.getItem('contactSelected') || '');
+  }
+
   constructor() { }
 
 
