@@ -3,7 +3,7 @@
 </header>
 <app-contact-list [contacts]="contacts" (onContactSelected)="onContactSelectedEvent($event)"></app-contact-list>
 <app-contact-form (onContactCreated)="onContactCreated($event)"></app-contact-form>
-<app-contact-view [contact]="contactSelected"></app-contact-view>
+<app-contact-view [contact]="contactSelected" [onChange]="onChange" [onKeyPressed]="onKeyPressed"></app-contact-view>
 
 
 

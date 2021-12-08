@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { HIGH_CONTRAST_MODE_ACTIVE_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
+import { Component, HostListener } from '@angular/core';
 import { Contact } from 'src/app/models/Contact';
 import { ContactServiceService } from './services/contact-service.service';
 
@@ -15,13 +16,15 @@ export class AppComponent {
 
   contacts: Contact[] = [];
   contactSelected?: Contact;
+  keyBoardBuffer!: String;
+  
   
   constructor(private contactService: ContactServiceService) {
-
   }
 
   ngOnInit() {
     this.contacts = this.contactService.contacts;
+    this.keyBoardBuffer = "";
   }
 
   public onContactCreated(onContactCreatedEvent: any) {
@@ -32,6 +35,31 @@ export class AppComponent {
 
   public onContactSelectedEvent(onContactSelectedEvent: any) : void {
     this.contactSelected = onContactSelectedEvent.contactSelected;
+  }
+
+  public onKeyPressed(event: KeyboardEvent) {
+    let keyPressed = event.key;
+    console.log(keyPressed);
+  
+    if (keyPressed == "Backspace"  && this.keyBoardBuffer.length != 0) {
+     this.keyBoardBuffer = this.keyBoardBuffer.substr(0, this.keyBoardBuffer.length-1)
+    } else if (keyPressed == "Enter") {
+      console.log(this.keyBoardBuffer);
+    }
+    if (keyPressed.match("\\w") && keyPressed != "Enter" && keyPressed != "Backspace"){
+        this.keyBoardBuffer += keyPressed;
+    }
+    
+  }
+
+  public onChange(contact: Contact): void {
+    console.log(contact)
+    this.keyBoardBuffer = "";
+    // const index = this.contacts.indexOf(contact);
+    // if (index >= 0) {
+    //   this.contacts.splice(index, 1, contact);
+    // }
+
   }
 
 

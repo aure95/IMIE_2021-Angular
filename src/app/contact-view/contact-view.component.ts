@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit, Output } from '@angular/core';
 import { Contact } from '../models/Contact';
 
 @Component({
@@ -9,10 +9,19 @@ import { Contact } from '../models/Contact';
 export class ContactViewComponent implements OnInit {
 
   @Input() contact?: Contact;
+  @Input() onChange!: Function;
+  @Input() onKeyPressed!: Function;
 
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  @HostListener('document:keydown', ['$event'])
+  keylistener(event: KeyboardEvent) {
+    this.onKeyPressed(event);
+  }
+
+
 
 }

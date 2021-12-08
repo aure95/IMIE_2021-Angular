@@ -1,10 +1,10 @@
-<div *ngIf="contact != undefined">
+<div>
 <h2>Detail du Contact</h2>
-    <section *ngFor="let contactElement of contact | keyvalue" >
-        <h1 *ngIf="contactElement.key != undefined">
+    <section *ngFor="let contactElement of contact | keyvalue; let index = index" >
+        <h1>
             {{contactElement.key}}
         </h1>
-        <span *ngIf="contactElement.value != undefined">
+        <span (click)="onChange(contact, index)">
             {{contactElement.value}}
         </span>
     </section>
