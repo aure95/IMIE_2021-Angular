@@ -1,0 +1,7 @@
+<div>
+    <h2>Detail</h2>
+    <h3>City</h3>
+    <span>{{wheatherData.name}}</span>
+    <h3>Wheather</h3>
+    <img *ngFor="let weather of getWeathers(wheatherData)" [src]="weather.icon" [alt]="weather.icon">
+</div>

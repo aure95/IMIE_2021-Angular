@@ -12,15 +12,13 @@ export class WheatherService {
 
   public getCurrentWheater(city : string) : Observable<any> {
     var params = {q: city, appid: environment.apiKey};
-    console.log("params = " + params);
-    console.log(environment.apiWheatherUri);
     return this.httpClient.get<any>(environment.apiWheatherUri, {params: params});
   }
 
-  public getCurrentWheatherMock(city: string) : string {
-    console.log(environment.apiWheatherUri);
-    return 'passed by mock';
-  }
+  // public getCurrentWheatherMock(city: string) : string {
+  //   console.log(environment.apiWheatherUri);
+  //   return 'passed by mock';
+  // }
 
   
 }

@@ -10,11 +10,12 @@ export class AppComponent {
   title = 'WheaterApp';
 
   wheatherData: any;
+  
 
   constructor(private wheatherService: WheatherService) {
   }
 
-  public onClickGetWheatherData() {
+  public onClickGetWheatherData(): void {
 
       this.wheatherService.getCurrentWheater('London').pipe().subscribe((data: any) => this.wheatherData = data );
       // this.wheatherData = this.wheatherService.getCurrentWheatherMock('London');
