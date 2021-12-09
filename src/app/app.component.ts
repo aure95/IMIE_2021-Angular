@@ -9,15 +9,14 @@ import { WheatherService } from './services/wheather.service';
 export class AppComponent {
   title = 'WheaterApp';
 
-  wheatherData: any
+  wheatherData: any;
 
   constructor(private wheatherService: WheatherService) {
-
   }
 
   public onClickGetWheatherData() {
 
-      this.wheatherService.getCurrentWheater('London').subscribe(data => this.wheatherData);
+      this.wheatherService.getCurrentWheater('London').pipe().subscribe((data: any) => this.wheatherData = data );
       // this.wheatherData = this.wheatherService.getCurrentWheatherMock('London');
       console.log(this.wheatherData);
   }
