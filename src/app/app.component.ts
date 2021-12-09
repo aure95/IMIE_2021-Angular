@@ -10,6 +10,7 @@ export class AppComponent {
   title = 'WheaterApp';
 
   wheatherData: any;
+  options: string[] = ['London', 'Paris'];
   
 
   constructor(private wheatherService: WheatherService) {
@@ -20,5 +21,9 @@ export class AppComponent {
       this.wheatherService.getCurrentWheater('London').pipe().subscribe((data: any) => this.wheatherData = data );
       // this.wheatherData = this.wheatherService.getCurrentWheatherMock('London');
       console.log(this.wheatherData);
+  }
+
+  public onSelectedCity(event : any) {
+    console.log(event.selectedCity)
   }
 }

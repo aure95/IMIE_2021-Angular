@@ -1,4 +1,6 @@
-<p>heelo</p>
+<h2>Weather App</h2>
+<app-city-search [options]="options" (selectedCityChange)="onSelectedCity($event)"></app-city-search>
+<br>
 <app-wheather-view [wheatherData]="wheatherData"></app-wheather-view>
 <button (click)="onClickGetWheatherData()">retrieve wheatherData</button>
 <router-outlet></router-outlet>
