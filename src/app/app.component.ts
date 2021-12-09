@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WheatherService } from './services/wheather.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'WheaterApp';
+
+  wheatherData: any
+
+  constructor(private wheatherService: WheatherService) {
+
+  }
+
+  public onClickGetWheatherData() {
+
+      this.wheatherService.getCurrentWheater('London').subscribe(data => this.wheatherData);
+      // this.wheatherData = this.wheatherService.getCurrentWheatherMock('London');
+      console.log(this.wheatherData);
+  }
 }
