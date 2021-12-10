@@ -21,6 +21,7 @@ export class WheatherViewComponent implements OnInit {
     for (let weather of wheatherData.weather) {
       let weatherToCreate = new Weather()
       weatherToCreate.setIcon(weather.icon);
+      weatherToCreate.description = weather.description;
       weathers.push(weatherToCreate);
     }
     return weathers;

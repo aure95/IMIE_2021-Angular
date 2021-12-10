@@ -2,6 +2,21 @@
     <h2>Detail</h2>
     <h3>City</h3>
     <span>{{wheatherData.name}}</span>
+    <br>
     <h3>Wheather</h3>
-    <img *ngFor="let weather of getWeathers(wheatherData)" [src]="weather.icon" [alt]="weather.icon">
+    <div *ngFor="let weather of getWeathers(wheatherData)">
+        <img [src]="weather.icon" [alt]="weather.icon">
+        <br>
+        <h2>description</h2>
+        <br>
+        <span>{{weather.description}}</span>
+        <br>
+    </div>
+    <!-- <div *ngFor="let weather of wheatherData | keyvalue">
+        <h2>{{weather.key}}}</h2>
+        <br>
+        <span>{{weather.value}}</span>
+        <br>
+    </div> -->
+    
 </div>
