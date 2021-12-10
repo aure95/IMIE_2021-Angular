@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {FormControl} from '@angular/forms';
+import { ConnectableObservable } from 'rxjs';
 
 
 @Component({
@@ -10,12 +11,17 @@ import {FormControl} from '@angular/forms';
 export class CitySearchComponent implements OnInit {
 
   @Input() options!: string[];
-  @Output() selectedCityChange = new EventEmitter();
-  selectedCity?: string;
+  @Input() selectedCity?: string ="";
+  @Output() onEventCityChange: any = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  public selectedCityChange(event: any) {
+     this.onEventCityChange.emit({citySelected : event.value});
+    
   }
 
 

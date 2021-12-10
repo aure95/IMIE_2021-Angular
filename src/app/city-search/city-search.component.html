@@ -1,6 +1,6 @@
 <form>
     <mat-form-field appearance="fill">
-      <mat-select [(ngModel)]="selectedCity">
+      <mat-select (selectionChange)="selectedCityChange($event)">
         <mat-option *ngFor="let option of options" [value]="option">
           {{option}}
         </mat-option>

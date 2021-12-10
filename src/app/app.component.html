@@ -1,6 +1,14 @@
 <h2>Weather App</h2>
-<app-city-search [options]="options" (selectedCityChange)="onSelectedCity($event)"></app-city-search>
+<app-city-search [options]="options" [selectedCity]="selectedCity" (onEventCityChange)="onCityChange($event)"></app-city-search>
 <br>
-<app-wheather-view [wheatherData]="wheatherData"></app-wheather-view>
-<button (click)="onClickGetWheatherData()">retrieve wheatherData</button>
+
+<div *ngif="waitingData">
+    waiting to retrieve weather data of {{selectedCity}}
+    <mat-progress-bar mode="query"></mat-progress-bar>
+</div>
+<div *ngIf="!waitingData">
+    <app-wheather-view [wheatherData]="wheatherData"></app-wheather-view>
+<!-- <button (click)="onClickGetWheatherData()">retrieve wheatherData</button> -->
+</div>
+
 <router-outlet></router-outlet>

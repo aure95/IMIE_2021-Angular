@@ -10,20 +10,32 @@ export class AppComponent {
   title = 'WheaterApp';
 
   wheatherData: any;
-  options: string[] = ['London', 'Paris'];
+  options: string[] = ['London', 'Paris', 'Madrid'];
+  selectedCity?: string;
+  waitingData: boolean = false;
   
 
   constructor(private wheatherService: WheatherService) {
   }
 
-  public onClickGetWheatherData(): void {
 
-      this.wheatherService.getCurrentWheater('London').pipe().subscribe((data: any) => this.wheatherData = data );
-      // this.wheatherData = this.wheatherService.getCurrentWheatherMock('London');
-      console.log(this.wheatherData);
+  public onClickGetWheatherData(): void {
+    this.retrieveWheatherDataFromSelectedCity();
   }
 
-  public onSelectedCity(event : any) {
-    console.log(event.selectedCity)
+  public retrieveWheatherDataFromSelectedCity(): void {
+    if (this.selectedCity != undefined) {
+      this.waitingData = true;
+      this.wheatherService.getCurrentWheater(this.selectedCity).pipe().subscribe((data: any) => this.wheatherData = data );
+      this.waitingData = false;
+    }
+  }
+
+  // public onSelectedCity(event : any) {
+  //   console.log("hola");
+  // }
+  public onCityChange(event: any) {
+    this.selectedCity = event.citySelected;
+    this.retrieveWheatherDataFromSelectedCity();
   }
 }
